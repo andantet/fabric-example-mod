@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+
+  "id": "example",
+  "version": "${version}",
+  "license": "MIT",
+
+  "name": "Example",
+  "icon": "assets/example/icon.png",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+
+  "authors": [
+    "andante."
+  ],
+
+  "contact": {
+    "homepage": "https://andantet.github.io/",
+    "sources": "https://github.com/andantet/example",
+    "issues": "https://github.com/andantet/example/issues"
+  },
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "me.andante.example.Example"
+    ]
+  },
+  "mixins": [
+    "example.mixins.json",
+    "datagen.mixins.json"
+  ],
+  "accessWidener": "example.accesswidener",
+
+  "depends": {
+    "fabricloader": ">=0.12.5",
+    "fabric": "*",
+    "minecraft": "1.17.x",
+    "java": ">=16"
+  },
+
+  "custom": {
+    "modmenu": {
+      "badges": [],
+      "links": {
+        "mod.example.contact.discord": "https://discord.dodogang.net"
+      }
+    }
+  }
+}
