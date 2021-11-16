@@ -2,8 +2,8 @@
   "required": true,
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_16",
-  "package": "me.andante.example.datagen.mixin",
-  "plugin": "me.andante.example.datagen.mixin.DataGenMixinPlugin",
+  "package": "me.andante.example.datagen.impl.mixin",
+  "plugin": "me.andante.example.datagen.impl.mixin.DataGenMixinPlugin",
   "client": [],
   "injectors": {
     "defaultRequire": 1
