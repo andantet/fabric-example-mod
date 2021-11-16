@@ -41,7 +41,7 @@ public class StateModelProvider extends AbstractDataProvider<Supplier<AbstractSt
     @Override
     public void run(DataCache cache) {
         super.run(cache);
-        this.write(cache, this.createFileMapModels(), (root, id) -> this.getOutput(root, id, "models/block"));
+        this.write(cache, this.createFileMapModels(), (root, id) -> this.getOutput(root, id, "models"));
     }
 
     @Override
