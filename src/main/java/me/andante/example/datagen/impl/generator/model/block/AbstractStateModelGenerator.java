@@ -22,6 +22,10 @@ public abstract class AbstractStateModelGenerator extends AbstractModelGenerator
         add(block, factory.apply(block));
     }
 
+    public void add(Block block) {
+        add(block, this::cubeAll);
+    }
+
     public StateGen empty(Block block) {
         return simple(name(block), ModelGen.EMPTY);
     }
