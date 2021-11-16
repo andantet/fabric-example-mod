@@ -28,14 +28,14 @@ public abstract class AbstractItemModelGenerator extends AbstractModelGenerator<
     }
 
     public void add(Block block) {
-        this.add(block.asItem(), inherit(block));
+        this.add(block.asItem(), InheritingModelGen.inherit(name(block.asItem(), "block/%s")));
     }
 
     public <T> T using(Identifier name, Function<Identifier, T> func) {
         return func.apply(name);
     }
-    public ModelGen inherit(Block block) {
-        return InheritingModelGen.inherit(name(block.asItem(), "block/%s"));
+    public ModelGen inherit(Identifier name) {
+        return InheritingModelGen.inherit(name);
     }
 
     public ModelGen generatedItem(Item item) {
