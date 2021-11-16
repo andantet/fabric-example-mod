@@ -5,7 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-import static me.andante.example.datagen.impl.generator.model.InheritingModelGen.*;
+import java.util.function.Function;
 
 @SuppressWarnings("unused")
 public abstract class AbstractStateModelGenerator extends AbstractModelGenerator<Block, StateGen> {
@@ -16,6 +16,10 @@ public abstract class AbstractStateModelGenerator extends AbstractModelGenerator
     @Override
     public Registry<Block> getRegistry() {
         return Registry.BLOCK;
+    }
+
+    public void add(Block block, Function<Block, StateGen> factory) {
+        add(block, factory.apply(block));
     }
 
     public StateGen empty(Block block) {
@@ -60,12 +64,12 @@ public abstract class AbstractStateModelGenerator extends AbstractModelGenerator
 
     public StateGen dualConnecting(Identifier name) {
         return VariantsStateGen.variants("connection=none", StateModelInfo.create(name, InheritingModelGen.cubeAll(name)))
-                               .variant("connection=up", StateModelInfo.create(Identifier.tryParse(name + "_up"), cubeColumn(name, Identifier.tryParse(name + "_bottom"))))
-                               .variant("connection=down", StateModelInfo.create(Identifier.tryParse(name + "_down"), cubeColumn(name, Identifier.tryParse(name + "_top"))))
-                               .variant("connection=north", StateModelInfo.create(Identifier.tryParse(name + "_north"), cube(name, Identifier.tryParse(name + "_left"), name, Identifier.tryParse(name + "_right"), Identifier.tryParse(name + "_bottom"), Identifier.tryParse(name + "_top"))))
-                               .variant("connection=south", StateModelInfo.create(Identifier.tryParse(name + "_south"), cube(name, Identifier.tryParse(name + "_right"), name, Identifier.tryParse(name + "_left"), Identifier.tryParse(name + "_top"), Identifier.tryParse(name + "_bottom"))))
-                               .variant("connection=west", StateModelInfo.create(Identifier.tryParse(name + "_east"), cube(Identifier.tryParse(name + "_left"), name, Identifier.tryParse(name + "_right"), name, Identifier.tryParse(name + "_right"), Identifier.tryParse(name + "_right"))))
-                               .variant("connection=east", StateModelInfo.create(Identifier.tryParse(name + "_west"), cube(Identifier.tryParse(name + "_right"), name, Identifier.tryParse(name + "_left"), name, Identifier.tryParse(name + "_left"), Identifier.tryParse(name + "_left"))));
+                               .variant("connection=up", StateModelInfo.create(Identifier.tryParse(name + "_up"), InheritingModelGen.cubeColumn(name, Identifier.tryParse(name + "_bottom"))))
+                               .variant("connection=down", StateModelInfo.create(Identifier.tryParse(name + "_down"), InheritingModelGen.cubeColumn(name, Identifier.tryParse(name + "_top"))))
+                               .variant("connection=north", StateModelInfo.create(Identifier.tryParse(name + "_north"), InheritingModelGen.cube(name, Identifier.tryParse(name + "_left"), name, Identifier.tryParse(name + "_right"), Identifier.tryParse(name + "_bottom"), Identifier.tryParse(name + "_top"))))
+                               .variant("connection=south", StateModelInfo.create(Identifier.tryParse(name + "_south"), InheritingModelGen.cube(name, Identifier.tryParse(name + "_right"), name, Identifier.tryParse(name + "_left"), Identifier.tryParse(name + "_top"), Identifier.tryParse(name + "_bottom"))))
+                               .variant("connection=west", StateModelInfo.create(Identifier.tryParse(name + "_east"), InheritingModelGen.cube(Identifier.tryParse(name + "_left"), name, Identifier.tryParse(name + "_right"), name, Identifier.tryParse(name + "_right"), Identifier.tryParse(name + "_right"))))
+                               .variant("connection=east", StateModelInfo.create(Identifier.tryParse(name + "_west"), InheritingModelGen.cube(Identifier.tryParse(name + "_right"), name, Identifier.tryParse(name + "_left"), name, Identifier.tryParse(name + "_left"), Identifier.tryParse(name + "_left"))));
     }
 
     public StateGen axisRotated(Identifier name, ModelGen model) {

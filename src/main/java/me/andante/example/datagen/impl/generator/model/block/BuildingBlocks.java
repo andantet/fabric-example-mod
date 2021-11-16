@@ -8,32 +8,30 @@ import net.minecraft.block.enums.BlockHalf;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 
-import static me.andante.example.datagen.impl.generator.model.InheritingModelGen.*;
-
 @SuppressWarnings("unused")
 public abstract class BuildingBlocks {
     public static StateGen fence(Identifier name, Identifier texName) {
         return MultipartStateGen.multipart()
-                                .part(StateModelInfo.create(Identifier.tryParse(name + "_post"), fencePost(texName)))
+                                .part(StateModelInfo.create(Identifier.tryParse(name + "_post"), InheritingModelGen.fencePost(texName)))
                                 .part(
                                     StateSelector.and().condition("north", "true"),
-                                    StateModelInfo.create(Identifier.tryParse(name + "_side"), fenceSide(texName))
+                                    StateModelInfo.create(Identifier.tryParse(name + "_side"), InheritingModelGen.fenceSide(texName))
                                 )
                                 .part(
                                     StateSelector.and().condition("east", "true"),
-                                    StateModelInfo.create(Identifier.tryParse(name + "_side"), fenceSide(texName))
+                                    StateModelInfo.create(Identifier.tryParse(name + "_side"), InheritingModelGen.fenceSide(texName))
                                                   .rotate(0, 90)
                                                   .uvlock(true)
                                 )
                                 .part(
                                     StateSelector.and().condition("south", "true"),
-                                    StateModelInfo.create(Identifier.tryParse(name + "_side"), fenceSide(texName))
+                                    StateModelInfo.create(Identifier.tryParse(name + "_side"), InheritingModelGen.fenceSide(texName))
                                                   .rotate(0, 180)
                                                   .uvlock(true)
                                 )
                                 .part(
                                     StateSelector.and().condition("west", "true"),
-                                    StateModelInfo.create(Identifier.tryParse(name + "_side"), fenceSide(texName))
+                                    StateModelInfo.create(Identifier.tryParse(name + "_side"), InheritingModelGen.fenceSide(texName))
                                                   .rotate(0, 270)
                                                   .uvlock(true)
                                 );

@@ -2,7 +2,6 @@ package me.andante.example.datagen.impl.provider;
 
 import com.google.common.collect.Maps;
 import com.google.gson.JsonElement;
-import me.andante.example.datagen.StateModelGenerator;
 import me.andante.example.datagen.impl.DataType;
 import me.andante.example.datagen.impl.generator.model.block.AbstractStateModelGenerator;
 import net.minecraft.data.DataCache;
@@ -36,7 +35,7 @@ public class StateModelProvider extends AbstractDataProvider<Supplier<AbstractSt
 
     @Override
     public List<Supplier<AbstractStateModelGenerator>> getGenerators() {
-        return List.of(StateModelGenerator::new);
+        return List.of();
     }
 
     @Override

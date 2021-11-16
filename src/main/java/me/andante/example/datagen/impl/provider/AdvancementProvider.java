@@ -2,7 +2,6 @@ package me.andante.example.datagen.impl.provider;
 
 import com.google.common.collect.Maps;
 import com.google.gson.JsonElement;
-import me.andante.example.datagen.AdvancementGenerator;
 import me.andante.example.datagen.impl.DataType;
 import me.andante.example.datagen.impl.generator.advancement.AbstractAdvancementGenerator;
 import net.minecraft.data.DataGenerator;
@@ -34,7 +33,7 @@ public class AdvancementProvider extends AbstractDataProvider<Supplier<AbstractA
 
     @Override
     public List<Supplier<AbstractAdvancementGenerator>> getGenerators() {
-        return List.of(AdvancementGenerator::new);
+        return List.of();
     }
 
     @Override

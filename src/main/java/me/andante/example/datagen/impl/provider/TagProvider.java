@@ -2,8 +2,6 @@ package me.andante.example.datagen.impl.provider;
 
 import com.google.common.collect.Maps;
 import com.google.gson.JsonElement;
-import me.andante.example.datagen.BlockTagGenerator;
-import me.andante.example.datagen.EntityTypeTagGenerator;
 import me.andante.example.datagen.impl.DataType;
 import me.andante.example.datagen.impl.generator.tag.AbstractTagGenerator;
 import net.minecraft.data.DataGenerator;
@@ -35,7 +33,7 @@ public class TagProvider extends AbstractDataProvider<Supplier<AbstractTagGenera
 
     @Override
     public List<Supplier<AbstractTagGenerator<?>>> getGenerators() {
-        return List.of(BlockTagGenerator::new, EntityTypeTagGenerator::new);
+        return List.of();
     }
 
     @Override

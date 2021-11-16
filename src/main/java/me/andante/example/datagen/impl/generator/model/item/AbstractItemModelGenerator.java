@@ -11,8 +11,6 @@ import net.minecraft.util.registry.Registry;
 
 import java.util.function.Function;
 
-import static me.andante.example.datagen.impl.generator.model.InheritingModelGen.*;
-
 public abstract class AbstractItemModelGenerator extends AbstractModelGenerator<Item, ModelGen> {
     public AbstractItemModelGenerator(String modId) {
         super(modId);
@@ -41,17 +39,17 @@ public abstract class AbstractItemModelGenerator extends AbstractModelGenerator<
     }
 
     public ModelGen generatedItem(Item item) {
-        return generated(name(item, "item/%s"));
+        return InheritingModelGen.generated(name(item, "item/%s"));
     }
     public ModelGen generatedBlock(Item item) {
-        return generated(name(item, "block/%s"));
+        return InheritingModelGen.generated(name(item, "block/%s"));
     }
 
     public ModelGen wall(Item item) {
-        return wallInventory(name(item, "block/%s", "_wall"));
+        return InheritingModelGen.wallInventory(name(item, "block/%s", "_wall"));
     }
     public ModelGen wallPlural(Item item) {
-        return wallInventory(name(item, "block/%ss", "_wall"));
+        return InheritingModelGen.wallInventory(name(item, "block/%ss", "_wall"));
     }
 
     public ModelGen spawnEgg() {

@@ -3,8 +3,8 @@ package me.andante.example.datagen.impl.generator.model.block;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import me.andante.example.datagen.impl.generator.model.ModelGen;
-import me.andante.example.datagen.impl.generator.model.StateModelInfo;
 import me.andante.example.datagen.impl.generator.model.StateGen;
+import me.andante.example.datagen.impl.generator.model.StateModelInfo;
 import net.minecraft.block.Block;
 import net.minecraft.util.Identifier;
 

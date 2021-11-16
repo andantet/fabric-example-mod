@@ -3,7 +3,6 @@ package me.andante.example.datagen.impl.provider;
 import com.google.common.collect.Maps;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import me.andante.example.datagen.RecipeGenerator;
 import me.andante.example.datagen.impl.DataType;
 import me.andante.example.datagen.impl.generator.recipe.AbstractRecipeGenerator;
 import net.minecraft.advancement.Advancement;
@@ -38,7 +37,7 @@ public class RecipeProvider extends AbstractDataProvider<Supplier<AbstractRecipe
 
     @Override
     public List<Supplier<AbstractRecipeGenerator>> getGenerators() {
-        return List.of(RecipeGenerator::new);
+        return List.of();
     }
 
     @Override
@@ -51,13 +50,13 @@ public class RecipeProvider extends AbstractDataProvider<Supplier<AbstractRecipe
     public Map<Identifier, JsonElement> createFileMap() {
         Map<Identifier, JsonElement> map = Maps.newHashMap();
         for (Supplier<AbstractRecipeGenerator> generator : this.getGenerators()) {
-            generator.get().accept((id, factory) -> {
-                factory.offerTo(provider -> {
+            generator.get().accept(
+                (id, factory) -> factory.offerTo(provider -> {
                     if (map.put(id, provider.toJson()) != null) {
                         throw new IllegalStateException("Duplicate recipe " + id);
                     }
-                }, id);
-            });
+                }, id)
+            );
         }
         return map;
     }
@@ -67,8 +66,8 @@ public class RecipeProvider extends AbstractDataProvider<Supplier<AbstractRecipe
         for (Supplier<AbstractRecipeGenerator> generator : this.getGenerators()) {
             AbstractRecipeGenerator gen = generator.get();
             Identifier rootId = gen.getId("root");
-            gen.accept((id, factory) -> {
-                factory.offerTo(provider -> {
+            gen.accept(
+                (id, factory) -> factory.offerTo(provider -> {
                     JsonObject json = provider.toAdvancementJson();
                     if (json != null) {
                         if (map.put(id, json) != null) {
@@ -82,8 +81,8 @@ public class RecipeProvider extends AbstractDataProvider<Supplier<AbstractRecipe
                             }
                         }
                     }
-                }, id);
-            });
+                }, id)
+            );
         }
         return map;
     }

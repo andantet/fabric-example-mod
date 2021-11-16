@@ -3,15 +3,12 @@ package me.andante.example.datagen.impl.provider;
 import com.google.common.collect.Maps;
 import com.google.gson.JsonElement;
 import com.mojang.datafixers.util.Pair;
-import me.andante.example.datagen.BlockLootTableGenerator;
-import me.andante.example.datagen.EntityTypeLootTableGenerator;
 import me.andante.example.datagen.impl.DataType;
 import me.andante.example.datagen.impl.generator.loot.AbstractLootTableGenerator;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.loot.LootManager;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.context.LootContextType;
-import net.minecraft.loot.context.LootContextTypes;
 import net.minecraft.util.Identifier;
 
 import java.util.List;
@@ -40,10 +37,7 @@ public class LootTableProvider extends AbstractDataProvider<Pair<Supplier<Abstra
 
     @Override
     public List<Pair<Supplier<AbstractLootTableGenerator<?>>, LootContextType>> getGenerators() {
-        return List.of(
-            Pair.of(BlockLootTableGenerator::new, LootContextTypes.BLOCK),
-            Pair.of(EntityTypeLootTableGenerator::new, LootContextTypes.ENTITY)
-        );
+        return List.of();
     }
 
     @Override
