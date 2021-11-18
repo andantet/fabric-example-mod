@@ -37,6 +37,11 @@ repositories {
     name = "Terraformers Backup Maven"
     url  = "https://maven.terraformersmc.com/releases/"
   }
+
+  maven {
+    name = "Quilt Maven"
+    url  = "https://maven.quiltmc.org/repository/release/"
+  }
 }
 
 dependencies {
