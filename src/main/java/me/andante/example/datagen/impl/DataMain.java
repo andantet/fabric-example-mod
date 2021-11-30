@@ -67,14 +67,14 @@ public class DataMain {
         DataGenerator gen = new DataGenerator(output, inputs);
 
         if (includeClient) {
-            gen.install(new StateModelProvider(gen));
-            gen.install(new ItemModelProvider(gen));
+            gen.addProvider(new StateModelProvider(gen));
+            gen.addProvider(new ItemModelProvider(gen));
         }
         if (includeServer) {
-            gen.install(new TagProvider(gen));
-            gen.install(new LootTableProvider(gen));
-            gen.install(new RecipeProvider(gen));
-            gen.install(new AdvancementProvider(gen));
+            gen.addProvider(new TagProvider(gen));
+            gen.addProvider(new LootTableProvider(gen));
+            gen.addProvider(new RecipeProvider(gen));
+            gen.addProvider(new AdvancementProvider(gen));
         }
 
         return gen;

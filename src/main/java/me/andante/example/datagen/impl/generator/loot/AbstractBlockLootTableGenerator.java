@@ -3,6 +3,7 @@ package me.andante.example.datagen.impl.generator.loot;
 import me.andante.example.datagen.impl.mixin.BlockLootTableGeneratorAccessor;
 import me.andante.example.datagen.impl.mixin.BlockLootTableGeneratorInvoker;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.block.enums.SlabType;
 import net.minecraft.enchantment.Enchantments;
@@ -146,7 +147,7 @@ public abstract class AbstractBlockLootTableGenerator extends AbstractLootTableG
                                                    .withOperation("LootTable", "BlockEntityTag.LootTable")
                                                    .withOperation("LootTableSeed", "BlockEntityTag.LootTableSeed")
                          )
-                         .apply(SetContentsLootFunction.builder()
+                         .apply(SetContentsLootFunction.builder(BlockEntityType.SHULKER_BOX)
                                                        .withEntry(DynamicEntry.builder(ShulkerBoxBlock.CONTENTS))
                          )
             )
@@ -185,7 +186,7 @@ public abstract class AbstractBlockLootTableGenerator extends AbstractLootTableG
                          .apply(CopyNbtLootFunction.builder(ContextLootNbtProvider.BLOCK_ENTITY)
                                                    .withOperation("Bees", "BlockEntityTag.Bees")
                          )
-                         .apply(CopyStateFunction.getBuilder(drop).addProperty(BeehiveBlock.HONEY_LEVEL))
+                         .apply(CopyStateFunction.builder(drop).addProperty(BeehiveBlock.HONEY_LEVEL))
             )
         );
     }
@@ -198,7 +199,7 @@ public abstract class AbstractBlockLootTableGenerator extends AbstractLootTableG
                          .apply(CopyNbtLootFunction.builder(ContextLootNbtProvider.BLOCK_ENTITY)
                                                    .withOperation("Bees", "BlockEntityTag.Bees")
                          )
-                         .apply(CopyStateFunction.getBuilder(drop).addProperty(BeehiveBlock.HONEY_LEVEL))
+                         .apply(CopyStateFunction.builder(drop).addProperty(BeehiveBlock.HONEY_LEVEL))
                          .alternatively(ItemEntry.builder(drop))
             )
         );

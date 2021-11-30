@@ -32,17 +32,17 @@
   "accessWidener": "example.accesswidener",
 
   "depends": {
-    "fabricloader": ">=0.12.5",
+    "fabricloader": ">=0.12.6",
     "fabric": "*",
-    "minecraft": "1.17.x",
-    "java": ">=16"
+    "minecraft": "1.18.x",
+    "java": ">=17"
   },
 
   "custom": {
     "modmenu": {
       "badges": [],
       "links": {
-        "mod.example.contact.discord": "https://discord.dodogang.net"
+        "mod.example.contact.discord": "https://discord.gg/example"
       }
     }
   }

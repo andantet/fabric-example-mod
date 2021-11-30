@@ -14,7 +14,7 @@ public class SharedConstantsMixin {
     @Inject(method = "getGameVersion", at = @At("HEAD"), cancellable = true)
     private static void fixNullGameVersion(CallbackInfoReturnable<GameVersion> cir) {
         if (Boolean.parseBoolean(System.getProperty(Example.MOD_ID + ".datagen"))) {
-            cir.setReturnValue(MinecraftVersion.GAME_VERSION);
+            cir.setReturnValue(MinecraftVersion.CURRENT);
         }
     }
 }
