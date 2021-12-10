@@ -4,13 +4,13 @@ public enum DataType {
     ASSET("assets"),
     DATA("data");
 
-    private final String id;
+    private final String folder;
 
-    DataType(String id) {
-        this.id = id;
+    DataType(String folder) {
+        this.folder = folder;
     }
 
-    public String getId() {
-        return this.id;
+    public String getFolder() {
+        return this.folder;
     }
 }

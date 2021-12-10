@@ -56,7 +56,7 @@ public abstract class AbstractDataProvider<T> implements DataProvider {
     }
 
     public Path getOutput(Path root, Identifier id, DataType type, String folder) {
-        return root.resolve(String.format("%s/%s/%s/%s.json", type.getId(), id.getNamespace(), folder, id.getPath()));
+        return root.resolve(String.format("%s/%s/%s/%s.json", type.getFolder(), id.getNamespace(), folder, id.getPath()));
     }
 
     public Path getOutput(Path root, Identifier id, String folder) {
