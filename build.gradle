@@ -46,17 +46,6 @@ dependencies {
 
 loom {
   accessWidenerPath = file("src/main/resources/${project.mod_id}.accesswidener")
-
-  runs {
-    data {
-      server()
-
-      vmArgs(
-              "-D${project.mod_id}.datagen=true",
-              "-D${project.mod_id}.datagen.path=\"${project.file("src/generated/resources")};${project.file("$buildDir/resources/main")}\""
-      )
-    }
-  }
 }
 
 processResources {
@@ -65,10 +54,6 @@ processResources {
   filesMatching("fabric.mod.json") {
     expand "version": project.version
   }
-}
-
-sourceSets.main.resources {
-  srcDirs += "$projectDir/src/generated/resources"
 }
 
 tasks.withType(JavaCompile).configureEach {
