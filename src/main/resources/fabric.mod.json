@@ -26,7 +26,8 @@
     ]
   },
   "mixins": [
-    "example.mixins.json"
+    "example.mixins.json",
+    "datagen.mixins.json"
   ],
   "accessWidener": "example.accesswidener",
 
